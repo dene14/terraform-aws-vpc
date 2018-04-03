@@ -1,3 +1,7 @@
+terraform {
+    required_version = ">= 0.11.3"
+}
+
 # Declare the data source for AZ
 data "aws_availability_zones" "available" {}
 # WE CANNOT USE DATA SOURCE NOW SINCE IT COULDN'T BE REFERENCED AS "COUNT" FOR INTERPOLATION
