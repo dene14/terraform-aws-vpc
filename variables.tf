@@ -27,5 +27,5 @@ variable "instance_tenancy" {
 }
 
 variable "create_private_subnet" {
-  default = 1
+  default = false
 }
