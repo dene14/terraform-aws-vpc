@@ -7,7 +7,7 @@ output "vpc.aws_availability_zones" {
 }
 
 output "subnets.private_ids" {
-  value = ["${aws_subnet.private.*.id}"]
+  value = ["${element(concat(aws_subnet.private.*.id, list("")), 0)}"]
 }
 
 output "subnets.public_ids" {
@@ -15,7 +15,7 @@ output "subnets.public_ids" {
 }
 
 output "route_tables.private" {
-  value = ["${aws_route_table.private.*.id}"]
+  value = ["${element(concat(aws_route_table.private.*.id, list("")), 0)}"]
 }
 
 output "route_tables.public" {
@@ -23,7 +23,7 @@ output "route_tables.public" {
 }
 
 output "subnets.private_cidr_blocks" {
-  value = ["${aws_subnet.private.*.cidr_block}"]
+  value = ["${element(concat(aws_subnet.private.*.cidr_block, list("")), 0)}"]
 }
 
 output "subnets.public_cidr_blocks" {
@@ -35,5 +35,5 @@ output "subnets.private_nat_ips" {
 }
 
 output "security_group.nat_routers" {
-  value = "${aws_security_group.private_nat.id}"
+  value = "${element(concat(aws_security_group.private_nat.*.id, list("")), 0)}"
 }
