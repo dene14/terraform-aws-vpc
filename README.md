@@ -12,5 +12,6 @@ module "vpc" {
   enable_dns_support = true
   enable_dns_hostnames = true
   enable_classiclink = false   # "true" supported only for 10.1.0.0/16 VPC IP address block per AWS documentation
+  create_private_subnet  = true
 }
 ```
