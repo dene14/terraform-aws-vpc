@@ -1,7 +1,7 @@
 resource "aws_internet_gateway" "gw" {
-    vpc_id = "${aws_vpc.vpc.id}"
+  vpc_id = "${aws_vpc.vpc.id}"
 
-    tags {
-        Name = "${var.vpc_name}"
-    }
+  tags {
+    Name = "${var.vpc_name}"
+  }
 }
