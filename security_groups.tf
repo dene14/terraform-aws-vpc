@@ -4,9 +4,7 @@ resource "aws_security_group" "private_nat" {
   description = "Full access for NAT addresses of private subnet in ${var.vpc_name} VPC"
   vpc_id      = "${aws_vpc.vpc.id}"
 
-  tags {
-    Name = "${var.vpc_name}-nat-routers"
-  }
+  tags = "${merge(map("Name", "${var.vpc_name}-nat-routers"),"${var.tags}")}"
 }
 
 resource "aws_security_group_rule" "nat_routers" {

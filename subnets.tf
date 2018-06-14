@@ -9,9 +9,7 @@ resource "aws_subnet" "private" {
 
   map_public_ip_on_launch = false
 
-  tags {
-    "Name" = "${var.vpc_name}-private-${count.index + 1}"
-  }
+  tags = "${merge(map("Name", "${var.vpc_name}-private-${count.index + 1}"),"${var.tags}")}"
 }
 
 resource "aws_subnet" "public" {
@@ -25,7 +23,5 @@ resource "aws_subnet" "public" {
 
   map_public_ip_on_launch = true
 
-  tags {
-    "Name" = "${var.vpc_name}-public-${count.index + 1}"
-  }
+  tags = "${merge(map("Name", "${var.vpc_name}-public-${count.index + 1}"),"${var.tags}")}"
 }

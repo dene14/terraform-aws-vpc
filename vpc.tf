@@ -9,8 +9,5 @@ resource "aws_vpc" "vpc" {
   enable_dns_support   = "${var.enable_dns_support}"
   enable_dns_hostnames = "${var.enable_dns_hostnames}"
   enable_classiclink   = "${var.enable_classiclink}"
-
-  tags {
-    Name = "${var.vpc_name}"
-  }
+  tags                 = "${merge(map("Name", "${var.vpc_name}"),"${var.tags}")}"
 }

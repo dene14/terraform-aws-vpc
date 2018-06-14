@@ -2,18 +2,14 @@ resource "aws_route_table" "public" {
   vpc_id = "${aws_vpc.vpc.id}"
   count  = "${length(var.aws_availability_zones)}"
 
-  tags {
-    Name = "${var.vpc_name}-public-${count.index + 1}"
-  }
+  tags = "${merge("${var.tags}" ,map("Name", "${var.vpc_name}-public-${count.index + 1}"))}"
 }
 
 resource "aws_route_table" "private" {
   vpc_id = "${aws_vpc.vpc.id}"
   count  = "${ var.create_private_subnet * length(var.aws_availability_zones) }"
 
-  tags {
-    Name = "${var.vpc_name}-private-${count.index + 1}"
-  }
+  tags = "${merge("${var.tags}", map("Name", "${var.vpc_name}-private-${count.index + 1}"))}"
 }
 
 resource "aws_route" "public-internet" {
