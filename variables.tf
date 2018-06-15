@@ -29,3 +29,8 @@ variable "instance_tenancy" {
 variable "create_private_subnet" {
   default = true
 }
+
+variable "tags" {
+  type    = "map"
+  default = {}
+}
