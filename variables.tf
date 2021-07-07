@@ -3,7 +3,7 @@ variable "vpc_cidr_block" {}
 variable "vpc_name" {}
 
 variable "aws_availability_zones" {
-  type = "list"
+  type = list
 }
 
 variable "subnet_cidr_bits" {
@@ -27,10 +27,10 @@ variable "instance_tenancy" {
 }
 
 variable "create_private_subnet" {
-  default = true
+  default = 1
 }
 
 variable "tags" {
-  type    = "map"
+  type    = map
   default = {}
 }

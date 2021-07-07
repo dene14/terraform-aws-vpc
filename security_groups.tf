@@ -14,5 +14,5 @@ resource "aws_security_group_rule" "nat_routers" {
   to_port           = 0
   protocol          = "-1"
   cidr_blocks       = ["${element(aws_eip.gw.*.public_ip, count.index)}/32"]
-  security_group_id = "${aws_security_group.private_nat.id}"
+  security_group_id = aws_security_group.private_nat[0].id
 }
